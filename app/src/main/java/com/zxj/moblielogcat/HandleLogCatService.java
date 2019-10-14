@@ -20,7 +20,7 @@ import static com.zxj.moblielogcat.MainActivity.INIT_Y;
  * Created by zxj on 2019-10-09.
  */
 
-public class  HandleLogCatService extends Service {
+public class HandleLogCatService extends Service {
     private static final String TAG = "HandleLogCatService";
     private WindowUtil windowUtil;
 

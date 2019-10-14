@@ -34,11 +34,12 @@ public class WindowUtil implements Handler.Callback {
 
     public static boolean isShowing = false;
 
-    private static final int INTERVAL = 2000;
+    private static final int INTERVAL = 1600;
 
 
     private Handler handler;
 
+    //TODO Loop
     public static class MyHandler extends Handler {
 
         WeakReference<WindowUtil> weakReference;
@@ -74,6 +75,9 @@ public class WindowUtil implements Handler.Callback {
 
     }
 
+
+
+
     public WindowUtil(Context context) {
         handler = new MyHandler(this);
         windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -103,6 +107,7 @@ public class WindowUtil implements Handler.Callback {
     }
 
     public void closeSpeedView() {
+        speedView.closeTask();
         windowManager.removeView(speedView);
         isShowing = false;
     }

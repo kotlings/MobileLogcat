@@ -35,6 +35,8 @@ import java.util.List;
 /**
  * Created by zxj on 2019-10-09.
  */
+
+//TODO 更新logcat显示，位置移动
 public class LogcatView extends FrameLayout implements Handler.Callback {
 
     private String title = "Console";
@@ -56,13 +58,12 @@ public class LogcatView extends FrameLayout implements Handler.Callback {
     private boolean isAutoFullScroll = true;
 
     private String searchContent = "";
-    private String noContentHint = "没有log信息";
     private String searchHint = "正在获取log信息";
 
     /*显示级别，0 所有，1 系统，2 警告,3 错误*/
     private int showGrade = 0;
 
-    private boolean isRuining = true;
+    public boolean isRuining = true;
     private ImageView ivDown;
     private SearchEditText etContent;
     public String searchTag = "";//过滤tag
@@ -135,6 +136,7 @@ public class LogcatView extends FrameLayout implements Handler.Callback {
                         refreshLogView();
                     }
                 } else {
+                    String noContentHint = "没有log信息";
                     tvStatus.setText(noContentHint);
                     tvStatus.setVisibility(View.VISIBLE);
                     tvLog.setVisibility(View.GONE);
@@ -163,14 +165,13 @@ public class LogcatView extends FrameLayout implements Handler.Callback {
 
         mHandler = new MyHandler(this);
 
-
         initView();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Process logcatProcess = null;
-                BufferedReader bufferedReader = null;
+                Process logcatProcess;
+                BufferedReader bufferedReader;
                 StringBuilder log = new StringBuilder();
                 String line;
                 try {
@@ -193,14 +194,14 @@ public class LogcatView extends FrameLayout implements Handler.Callback {
     }
 
 
-    /**
-     * 设置搜索的内容(默认没有)
-     *
-     * @param searchContent
-     */
-    public void setSearchContent(String searchContent) {
-        this.searchContent = searchContent;
-    }
+//    /**
+//     * 设置搜索的内容(默认没有)
+//     *
+//     * @param searchContent
+//     */
+//    public void setSearchContent(String searchContent) {
+//        this.searchContent = searchContent;
+//    }
 
     /**
      * 设置目标tag（默认没有）
@@ -399,14 +400,14 @@ public class LogcatView extends FrameLayout implements Handler.Callback {
     }
 
 
-    /**
-     * 设置title
-     *
-     * @param title
-     */
-    public void setTitle(String title) {
-        this.title = title;
-    }
+//    /**
+//     * 设置title
+//     *
+//     * @param title
+//     */
+//    public void setTitle(String title) {
+//        this.title = title;
+//    }
 
 
     /**
